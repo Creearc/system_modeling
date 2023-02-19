@@ -65,8 +65,8 @@ def test_OR_AND_NOT():
 
 
 if __name__ == '__main__':
-    # test_1()
-    # test_OR_AND_NOT()
+    test_1()
+    test_OR_AND_NOT()
 
     out = cocroach([1, 1, 0])
     print(out)
