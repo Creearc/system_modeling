@@ -85,39 +85,3 @@ if __name__ == '__main__':
     print('\n======================')
     print('---Финальное дерево---')
     pprint(answer)
-
-
-
-# if __name__ == '__main__':
-#     print(data, '\n')
-#     columns = list(data.columns)
-#     answer = dict()
-#     step = 1
-
-#     target = 'y'
-#     columns.pop(columns.index(target))
-#     current_uncert = []
-
-#     for cln in columns:
-        
-#         out, un, val_sum = get_value(data, cln, target)
-#         current_uncert.append(val_sum)
-
-#         print('__________________')
-#         print('cln', cln)
-#         print('\nout:')
-#         pprint(out)
-#         print('\nun:')
-#         pprint(un)
-#         print('val_sum', val_sum)
-    
-#     vert_ind = columns[current_uncert.index(min(current_uncert))]
-#     answer[vert_ind] = dict()
-#     columns.pop(columns.index(vert_ind))
-#     current_uncert = []
-
-#     print('\n\nanswer', answer)
-#     print('columns', columns)
-
-#     print('======================')
-
