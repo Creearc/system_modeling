@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import pprint
 
+
 def read_vectors(file):
     data = pd.read_excel(file)
 
@@ -65,6 +66,8 @@ if __name__ == '__main__':
     result = find_similarities(vectors)
     print(result)
     pprint.pprint(result)
+
+    
 
     
 
