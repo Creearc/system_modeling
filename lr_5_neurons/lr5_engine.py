@@ -35,6 +35,22 @@ class Neuron:
         res = self.c * (y - res)
         for i in range(len(self.k)):
             self.k[i]+= res * x[i]
+
+
+    def train(self, vector, max_iter=100):
+        for iter_number in range(max_iter):
+            print('Iter {} {}'.format(iter_number, self.k))
+            ready = True
+            for i, vector in vectors.items():
+                x, y = vector[:-1], vector[-1]
+                res = neuron.run(x)
+                if res != y:
+                    neuron.delta_rule(res, y, x)
+                    ready = False
+            if ready:
+                break
+        print('Train is over')
+            
     
 
 if __name__ == '__main__':
@@ -43,13 +59,10 @@ if __name__ == '__main__':
 
     C = 0.2
     neuron = Neuron(3, C)
-    print(neuron.k)
 
-    for iteration in range(20):
-        for i, vector in vectors.items():
-            x, y = vector[:-1], vector[-1]
-            res = neuron.run(x)
-            print(res, y)
-            if res != y:
-                neuron.delta_rule(res, y, x)
-                print(neuron.k)
+    neuron.train(vectors, 1000)
+
+    print(neuron.run(vectors[1]))
+
+    
+
