@@ -27,17 +27,6 @@ def not_neuron(inp: list):
     h = 0
     return activation_step(sum([a*b for a,b in zip(inp, w)]), h)
 
-
-def neuron(inp: list, w: list, h):
-    return activation_step(sum([a*b for a,b in zip(inp, w)]), h)
-
-
-def cocroach(inp: list):
-    n1 = neuron(inp[:-1], [1, 1], 2)
-    n2 = neuron(inp[1:], [1, 1], 2)
-    return [n1, n2]
-
-
 def test_1():
     weights = [-1, 2]
     for h in range(-1, 3):
@@ -64,11 +53,37 @@ def test_OR_AND_NOT():
     pprint(out_not)
 
 
+def neuron(inp: list, w: list, h):
+    return activation_step(sum([a*b for a,b in zip(inp, w)]), h)
+
+def memory_neuron(inp: list, w: list, h):
+    return activation_step(sum([a*b for a,b in zip(inp, w)]), h)
+
+
+def cocroach(inp: list): # Вход: касание, ветер, нет касания
+    n1 = neuron(inp[:-1], [1, 1], 2)
+    n2 = neuron(inp[1:], [1, 1], 2)
+    return [n1, n2]
+
+def dog(inp: list): # Вход: миска, стол, хозяин
+    out = neuron(inp, [1, 2, -1], 2)
+    return out
+
+def dog2(inp: list): # Вход: миска, стол, хозяин
+    n1 = neuron(inp, [2, -1, 1], 2) # Ест в миске
+    n2 = neuron(inp, [1, 2, -2], 2) # Ест на столе
+    return [n1, n2]
+
+def butterfly(inp: list): # Вход: солнце, температура меньше равна 36 градусов
+    out = neuron(inp, [2, -1], 2)
+    return out
+
+
 if __name__ == '__main__':
     # test_1()
     # test_OR_AND_NOT()
 
-    out = cocroach([1, 1, 0])
+    out = butterfly([0, 1])
     print(out)
 
 
