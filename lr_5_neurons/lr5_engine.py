@@ -23,7 +23,6 @@ pavel = lambda inp, w : sum([a*b for a,b in zip(inp, w)])
 class Neuron:
     def __init__(self, size, c):
         self.k = [random.randint(-100, 100) / 100 for i in range(size)]
-
         self.c = c
 
 
@@ -62,7 +61,7 @@ if __name__ == '__main__':
 
     neuron.train(vectors, 1000)
 
-    print(neuron.run(vectors[1]))
+    print(neuron.run(vectors[3][:-1]))
 
     
 
