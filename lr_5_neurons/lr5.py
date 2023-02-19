@@ -1,6 +1,7 @@
-import math
-import numpy as np
-import pandas as pd
+# import math
+# import numpy as np
+# import pandas as pd
+from random import randint
 from pprint import pprint
 
 
@@ -56,8 +57,18 @@ def test_OR_AND_NOT():
 def neuron(inp: list, w: list, h):
     return activation_step(sum([a*b for a,b in zip(inp, w)]), h)
 
-def memory_neuron(inp: list, w: list, h):
-    return activation_step(sum([a*b for a,b in zip(inp, w)]), h)
+
+class Memory:
+    def __init__(self):
+        self.q = 0
+
+    def event(self, mx=1):
+        if self.q < mx:
+            self.q += 1
+        return self.q
+
+    def reset(self):
+        self.q = 0
 
 
 def cocroach(inp: list): # Вход: касание, ветер, нет касания
@@ -78,12 +89,48 @@ def butterfly(inp: list): # Вход: солнце, температура ме�
     out = neuron(inp, [2, -1], 2)
     return out
 
+def chicken(inp: list, memory): # Вход: пища, желтое и полосатое
+    n1 = neuron(inp, [0, memory.q], 1)
+    n2 = neuron(inp, [1, -memory.q], 1)
+    if inp[1] == 1:
+        memory.event()
+    return [n1, n2] # Бежать, клевать
+
+# def crow(inp: list, memory): # Вход: [заходит, выходит]
+#     n1 = neuron(inp, [memory.q], 1)
+#     if inp == 1:
+#         memory.event()
+#     return n1 # 1 - Ждать/ 0 - лететь
+
 
 if __name__ == '__main__':
-    test_1()
-    test_OR_AND_NOT()
+    # test_1()
+    # test_OR_AND_NOT()
 
-    out = butterfly([0, 1])
-    print(out)
+    # out = butterfly([0, 0])
+    # print(out)
 
+    # ----------------------------------------
+
+    chicken_memory = Memory()
+    events = [randint(0, 1) for i in range(20)]
+    print(events)
+
+    for i, e in enumerate(events):
+        print(e)
+        out = chicken([1, e], chicken_memory)
+        print(out)
+        if i == 10:
+            print('_____')
+            chicken_memory.reset()
+
+    # ----------------------------------------
+
+    # crow_memory = Memory()
+    # events = [[randint(0, 1), randint(0, 1)] for i in range(20)]
+
+    # for i, e in enumerate(events):
+    #     print(e, crow_memory.q)
+    #     out = crow(e, crow_memory)
+    #     print(out)
 
