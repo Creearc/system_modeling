@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
     neuron.train(vectors, 1000)
 
-    print(neuron.run(vectors[1]))
+    print(neuron.run(vectors[1][:-1]))
 
     
 
