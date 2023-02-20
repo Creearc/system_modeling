@@ -111,49 +111,18 @@ if __name__ == '__main__':
     # print(out)
 
     # ----------------------------------------
-    # Таракан
-    crch = list()
-    for x1 in [0,1]:
-        for x2 in [0,1]:
-            for x3 in [0,1]:
-                crch.append([x1, x2, x3, cocroach([x1,x2,x3])])
-    pprint(crch)
-    print('---------------------------------')
-    # ----------------------------------------
-    # Собака есть со стола
-    dg = list()
-    for x1 in [0,1]:
-        for x2 in [0,1]:
-            for x3 in [0,1]:
-                dg.append([x1, x2, x3, dog2([x1,x2,x3])])
-    pprint(dg)
-    print('---------------------------------')
-    # ----------------------------------------
-    # Ципленок
+
     chicken_memory = Memory()
-    #events = [randint(0, 1) for i in range(20)]
-    #print(events)
+    events = [randint(0, 1) for i in range(20)]
+    print(events)
 
-    #for i, e in enumerate(events):
-    #    print(e)
-    #    out = chicken([1, e], chicken_memory)
-    #    print(out)
-    #    if i == 10:
-    #        print('_____')
-    #        chicken_memory.reset()
-    ckn = list()
-    for x1 in [0,1]:
-        for x2 in [0,1]:
+    for i, e in enumerate(events):
+        print(e)
+        out = chicken([1, e], chicken_memory)
+        print(out)
+        if i == 10:
+            print('_____')
             chicken_memory.reset()
-            ckn.append([x1, x2, chicken([x1,x2], chicken_memory)])
-    pprint(ckn)
-
-    ckn = list()
-    for x1 in [0,1]:
-        for x2 in [0,1]:
-            ckn.append([x1, x2, chicken([x1,x2], chicken_memory)])
-    pprint(ckn)
-    print('---------------------------------')
 
     # ----------------------------------------
 

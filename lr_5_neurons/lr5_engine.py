@@ -63,6 +63,12 @@ if __name__ == '__main__':
     neuron.train(vectors, 1000)
 
     print(neuron.run(vectors[1][:-1]))
-
-    
-
+    print(neuron.run(vectors[2][:-1]))
+    print(neuron.run(vectors[3][:-1]))
+    print(neuron.run(vectors[4][:-1]))
+    print(neuron.run(vectors[5][:-1]))
+    print(neuron.run(vectors[6][:-1]))
+    print(neuron.run(vectors[7][:-1]))
+    print(neuron.run(vectors[8][:-1]))
+    print(neuron.run(vectors[9][:-1]))
+    print(neuron.run(vectors[10][:-1]))
