@@ -45,7 +45,7 @@ class Neuron:
                 x, y = vector[:-1], vector[-1]
                 res = self.run(x)
                 if res != y:
-                    neuron.delta_rule(res, y, x)
+                    self.delta_rule(res, y, x)
                     ready = False
             if ready:
                 break
