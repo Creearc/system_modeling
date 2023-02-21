@@ -1,3 +1,13 @@
+import pandas as pd
+
+def read_vectors(file):
+    data = pd.read_excel(file)
+
+    vectors = dict()
+    for i in range(len(data['Объект'])):
+        vectors[data['Объект'][i]] = [data[j][i] for j in data.columns[1:]]
+    return vectors
+
 
 class Model:
     def __init__(self, features, classes):
@@ -62,14 +72,12 @@ class Model:
 
 
 if __name__ == '__main__':
-    data = {'птица' : [1, 1, 1, 0, 1, 0],
-            'самолет' : [1, 1, 0, 1, 0, 1],
-            'планер' : [1, 1, 0, 0, 0, 0]}
+    data  = read_vectors('inp.xls')
 
     test_data = {'ракета' : [0, 1, 0, 1, 0, 0]}
 
     features = 6
-    classes = ['птица', 'самолет', 'планер']
+    classes = list(data.keys())
 
     
     model = Model(features, classes)
