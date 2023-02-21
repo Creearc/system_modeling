@@ -37,13 +37,13 @@ class Neuron:
             self.k[i]+= res * x[i]
 
 
-    def train(self, vector, max_iter=100):
+    def train(self, vectors, max_iter=100):
         for iter_number in range(max_iter):
             print('Iter {} {}'.format(iter_number, self.k))
             ready = True
             for i, vector in vectors.items():
                 x, y = vector[:-1], vector[-1]
-                res = neuron.run(x)
+                res = self.run(x)
                 if res != y:
                     neuron.delta_rule(res, y, x)
                     ready = False
