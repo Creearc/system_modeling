@@ -72,8 +72,8 @@ class Memory:
 
 
 def cocroach(inp: list): # Вход: касание, ветер, нет касания
-    n1 = neuron(inp[:-1], [1, 1], 2)
-    n2 = neuron(inp[1:], [1, 1], 2)
+    n1 = neuron(inp[:-1], [1, 1], 2) # Бежать
+    n2 = neuron(inp[1:], [1, 1], 2) # Лететь
     return [n1, n2]
 
 def dog(inp: list): # Вход: миска, стол, хозяин
@@ -85,7 +85,7 @@ def dog2(inp: list): # Вход: миска, стол, хозяин
     n2 = neuron(inp, [1, 2, -2], 2) # Ест на столе
     return [n1, n2]
 
-def butterfly(inp: list): # Вход: солнце, температура меньше равна 36 градусов
+def butterfly(inp: list): # Вход: солнце, температура <= 36 градусов
     out = neuron(inp, [2, -1], 2)
     return out
 
@@ -120,7 +120,7 @@ if __name__ == '__main__':
     pprint(crch)
     print('---------------------------------')
     # ----------------------------------------
-    # Собака есть со стола
+    # Собака ест со стола
     dg = list()
     for x1 in [0,1]:
         for x2 in [0,1]:
@@ -128,6 +128,15 @@ if __name__ == '__main__':
                 dg.append([x1, x2, x3, dog2([x1,x2,x3])])
     pprint(dg)
     print('---------------------------------')
+    # ----------------------------------------
+    # Бабочка
+    btf = list()
+    for x1 in [0,1]:
+        for x2 in [0,1]:
+            btf.append([x1, x2, butterfly([x1,x2])])
+    pprint(btf)
+    print('---------------------------------')
+    
     # ----------------------------------------
     # Ципленок
     chicken_memory = Memory()
