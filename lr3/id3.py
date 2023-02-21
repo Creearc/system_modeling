@@ -78,10 +78,20 @@ def get_answer(data, columns, target, if_print=False, step=1):
 
 if __name__ == '__main__':
 
-    data = pd.read_excel('inp.xls')
+    data = pd.read_excel('inp3.xls')
     target = 'y'
 
-    answer = get_answer(data, list(data.columns), target)
+    answer = get_answer(data, list(data.columns), target, True)
+    print('\n======================')
+    print('---Финальное дерево---')
+    pprint(answer)
+
+
+    print('= Павел ==========================')
+    data = pd.read_excel('inp3_pavel.xls')
+    target = 'Играть в теннис на улице'
+
+    answer = get_answer(data, list(data.columns), target, True)
     print('\n======================')
     print('---Финальное дерево---')
     pprint(answer)
